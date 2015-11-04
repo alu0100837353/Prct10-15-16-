@@ -4,6 +4,6 @@ Desarrollo dirigido por pruebas.
 
 # Desarrolldores
 
-David Rodríguez González de Chaves 
-Ruyman Rodríguez Martín
+* David Rodríguez González de Chaves 
+* Ruyman Rodríguez Martín
 
