@@ -1,12 +1,12 @@
+require 'bibliografia'
 require 'spec_helper'
-require 'biblio'
 
 describe Biblio do
     
     before :each do
         @b1 = Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])
-        @b2 = Biblio.new("autor1", "titulo", , "editorial", "edicion", "fecha publicacion", "isbn1")
-        @b3 = Biblio.new(["autor1","autor2"], "titulo", , "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])
+        @b2 = Biblio.new("autor1", "titulo", nil, "editorial", "edicion", "fecha publicacion", "isbn1")
+        @b3 = Biblio.new(["autor1","autor2"], "titulo", nil, "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])
     end
     
     describe "Comprobación de una correcta construcción" do
@@ -80,7 +80,7 @@ describe Biblio do
         end
         it "Test método isbn" do
             expect(@b1.isbn).to eq(["isbn1", "isbn2"])
-            expect(@b2.isbn).to eq["isbn1")
+            expect(@b2.isbn).to eq("isbn1")
             expect(@b3.isbn).to eq(["isbn1", "isbn2"])
         end
         it "Test método to_s (nos devuelve una referencia formateada)" do
@@ -94,21 +94,20 @@ describe Biblio do
     
     describe "Lanzamiento de errores al construir" do
       it "Debe haber un autor" do
-          expect(Biblio.new( , "titulo", "serie", "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
+          expect(Biblio.new(nil, "titulo", "serie", "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
       end
       it "Debe haber un titulo" do
-          expect(Biblio.new("autor1" , , "serie", "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
+          expect(Biblio.new("autor1" , nil, "serie", "editorial", "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
       end
       it "Debe haber una editorial" do
-          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", , "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
+          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie",nil , "edicion", "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
       end
       it "Debe haber una edicion" do
-          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", , "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
+          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial",nil , "fecha publicacion", ["isbn1", "isbn2"])).to raise_error(ArgumentError)
       end
       it "Debe haber una fecha de publicacion" do
-          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", "edicion", , ["isbn1", "isbn2"])).to raise_error(ArgumentError)
+          expect(Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", "edicion",nil , ["isbn1", "isbn2"])).to raise_error(ArgumentError)
       end
+    end
       
 end
-
-
