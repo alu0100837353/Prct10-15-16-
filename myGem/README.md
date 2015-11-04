@@ -2,7 +2,9 @@
 
 Desarrollo dirigido por pruebas.
 
-# Desarrolldores
+En esta práctica desarrollaremos una gema (usando bundler) y usaremos TDD para crear una clase Bibliografía, que nos permita gestionar bibliografias.
+
+# Desarrolladores
 
 * David Rodríguez González de Chaves 
 * Ruyman Rodríguez Martín
