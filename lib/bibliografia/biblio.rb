@@ -40,11 +40,22 @@ class Biblio
     end
     
     def to_s
+        # imprime los autores
         str_autores = ""
         @autores.each do |autor|
             str_autores += autor + ", "
         end
         str_autores = str_autores[0, str_autores.length - 2] + "."
         puts str_autores
+        
+        # imprime los titulo
+        puts @titulo
+        
+        # imprime la serie
+        if(serie != nil)
+            puts "(" + serie + ")"
+        end
     end
 end
+
+
