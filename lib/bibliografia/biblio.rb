@@ -69,7 +69,16 @@ class Biblio
         end
         
         # imprime editorial, edicion y fecha
-        puts "#{@editorial};  #{@edicion} edition (#{@fecha_publicacion})"
+        puts "#{@editorial}; #{@n_edicion} edición (#{@fecha_publicacion})"
+        
+        #imprime los isbn
+        @isbn.each do |n_isbn|
+            if n_isbn.length > 10
+                puts "ISBN-13: #{n_isbn}"
+            else
+                puts "ISBN-10: #{n_isbn}"
+            end
+        end
         
     end
 end
