@@ -25,62 +25,30 @@ class Biblio
         @isbn = isbn
     end
     
-    def get_autores
-        return @autores
-    end
-    
-    def get_titulo
-        return @titulo
-    end
-    
-    def get_serie
-        return @serie
-    end
-    
-    def get_editorial
-        return @editorial
-    end
-    
-    def get_n_edicion
-        return @n_edicion
-    end
-    
-    def get_fecha_publicacion
-        return @fecha_publicacion
-    end
-    
-    def get_isbn
-        return @isbn
-    end
-    
     def to_s
-        # imprime los autores
+        salida=""
+        # autores
         str_autores = ""
         @autores.each do |autor|
             str_autores += autor + ", "
         end
         str_autores = str_autores[0, str_autores.length - 2] + "."
-        puts str_autores
-        
-        # imprime los titulo
-        puts @titulo
-        
-        # imprime la serie
-        if(serie != nil)
-            puts "(#{@serie})"
-        end
-        
-        # imprime editorial, edicion y fecha
-        puts "#{@editorial}; #{@n_edicion} edición (#{@fecha_publicacion.strftime("%d, %B %Y")})"
-        
-        #imprime los isbn
+
+        # isbn
+        str_isbn = ""
         @isbn.each do |n_isbn|
             if n_isbn.length > 10
-                puts "ISBN-13: #{n_isbn}"
+                str_isbn += "ISBN-13: #{n_isbn}\n"
             else
-                puts "ISBN-10: #{n_isbn}"
+                str_isbn += "ISBN-10: #{n_isbn}\n"
             end
         end
         
+        if(serie != nil)
+            salida = "#{str_autores}\n#{titulo}\n#{serie}\n#{@editorial}; #{@n_edicion} edición (#{@fecha_publicacion.strftime("%d, %B %Y")})\n#{str_isbn}"
+        else
+            salida = "#{str_autores}\n#{titulo}\n#{@editorial}; #{@n_edicion} edición (#{@fecha_publicacion.strftime("%d, %B %Y")})\n#{str_isbn}"
+        end
+        salida
     end
 end
