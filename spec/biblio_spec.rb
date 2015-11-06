@@ -84,9 +84,9 @@ describe Biblio do
             expect(@b3.isbn).to eq(["isbn1", "isbn2"])
         end
         it "Test método to_s (nos devuelve una referencia formateada)" do
-            expect(@b1.to_s).to eq(@b1.to_s)
-            expect(@b2.to_s).to eq(@b2.to_s)
-            expect(@b3.to_s).to eq(@b3.to_s)
+            expect(@b1.to_s).to eq("autor1, autor2, autor3.\ntitulo\nserie\neditorial; 1 edición (01, January 1991)\nISBN-10: isbn1\nISBN-10: isbn2\n")
+            expect(@b2.to_s).to eq("autor1.\ntitulo\neditorial; 1 edición (01, January 1991)\nISBN-10: isbn1\n")
+            expect(@b3.to_s).to eq("autor1, autor2.\ntitulo\neditorial; 1 edición (01, January 1991)\nISBN-10: isbn1\nISBN-10: isbn2\n")
         end
     end
     
