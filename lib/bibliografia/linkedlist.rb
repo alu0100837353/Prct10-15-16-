@@ -1,5 +1,5 @@
 class List
-    attr_accessor :root, :tail, :size
+    attr_accessor :root, :tail
 
     def initialize(valor)
         @root = Node.new(valor, nil, nil)
