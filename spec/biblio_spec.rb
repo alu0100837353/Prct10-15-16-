@@ -131,7 +131,7 @@ describe Biblio do
             expect(@l1.tail.value).to eq(5)
         end
         it "Debe existir una lista con su cabeza" do 
-            expect(@l1.root.value).to eq("root")
+            expect(@l1.root.value).to eq("Root")
         end
         it "La lista está doblemente enlazada" do 
             @l1.insert(8, 7, 6)
@@ -156,11 +156,11 @@ describe Biblio do
         end
         it "probando to_s" do
             @l1.push("Pregunta 1")
-            expect(@l1.to_s).to eq("root\nPregunta 1\n")
+            expect(@l1.to_s).to eq("Root\nPregunta 1\n")
         end
         it "Invertir lista" do
             @l1.insert(1,2,3,4)
-            expect(@l1.invertirOrden.root.next.value).to eq(3)
+            expect(@l1.reverse.root.next.value).to eq(3)
         end
     end
     
