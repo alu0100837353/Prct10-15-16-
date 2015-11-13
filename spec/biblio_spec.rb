@@ -8,6 +8,11 @@ describe Biblio do
         @b2 = Biblio.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
         @b3 = Biblio.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
         @l1 = List.new("Root")
+        @r1 = Biblio.new(["Dave Thomas", "Andy Hunt", "Chad Fowler"],"Programming Ruby 1.9 & 2.0: The Pragmatic Programmers’Guide", "The Facets of Ruby", "Pragmatic Bookshelf", 4, "7-7-2013",["ISBN-13: 978-1937785499", "ISBN-10: 1937785491"])
+        @r2 = Biblio.new(["Scott Chacon"], "Pro Git 2009th Edition", "Pro", "Apress", 2009, "27-8-2009", ["ISBN-13: 978-1430218333", "ISBN-10: 1430218339"])
+        @r3 = Biblio.new(["David Flanagan", "Yukihiro Matsumoto"],"The Ruby Programming Language", nil, "O’Reilly Media", 1, "4-2-2008", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
+        @r4 = Biblio.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends","The Facets of Ruby", "Pragmatic Bookshelf", 1, "25-12-2010", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371"])
+        @r5 = Biblio.new(["Richard E"], "Silverman Git Pocket Guide", nil, "O’Reilly Media", 1, "2-8-2013", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])
     end
     
     describe "Comprobación de una correcta construcción" do
@@ -164,5 +169,17 @@ describe Biblio do
         end
     end
     
+    describe "Comprobación Referencias Reales" do
+        it "Construcción correcta" do
+            expect(@r1.to_s).to eq("Dave Thomas, Andy Hunt, Chad Fowler.\nProgramming Ruby 1.9 & 2.0: The Pragmatic Programmers’Guide\nThe Facets of Ruby\nPragmatic Bookshelf; 4 edición (07, July 2013)\nISBN-13: ISBN-13: 978-1937785499\nISBN-13: ISBN-10: 1937785491\n")
+            expect(@r2.to_s).to eq("Scott Chacon.\nPro Git 2009th Edition\nPro\nApress; 2009 edición (27, August 2009)\nISBN-13: ISBN-13: 978-1430218333\nISBN-13: ISBN-10: 1430218339\n")
+            expect(@r3.to_s).to eq("David Flanagan, Yukihiro Matsumoto.\nThe Ruby Programming Language\nO’Reilly Media; 1 edición (04, February 2008)\nISBN-13: ISBN-10: 0596516177\nISBN-13: ISBN-13: 978-0596516178\n")
+            expect(@r4.to_s).to eq("David Chelimsky, Dave Astels, Bryan Helmkamp, Dan North, Zach Dennis, Aslak Hellesoy.\nThe RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends\nThe Facets of Ruby\nPragmatic Bookshelf; 1 edición (25, December 2010)\nISBN-13: ISBN-10: 1934356379\nISBN-13: ISBN-13: 978-1934356371\n")
+            expect(@r5.to_s).to eq("Richard E.\nSilverman Git Pocket Guide\nO’Reilly Media; 1 edición (02, August 2013)\nISBN-13: ISBN-10: 1449325866\nISBN-13: ISBN-13: 978-1449325862\n")
+        end
+    end
+
 end
+           
+
       
