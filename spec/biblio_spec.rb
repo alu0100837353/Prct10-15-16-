@@ -7,6 +7,7 @@ describe Biblio do
         @b1 = Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
         @b2 = Biblio.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
         @b3 = Biblio.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
+        @l1 = List.new("Root")
     end
     
     describe "Comprobación de una correcta construcción" do
@@ -107,5 +108,61 @@ describe Biblio do
           expect { Biblio.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1,nil , ["isbn1", "isbn2"]) }.to raise_error(ArgumentError)
       end
     end
-      
+    
+    describe "Node" do 
+        it "Debe existir un Nodo de la lista con sus datos y su siguiente" do 
+            expect(@l1.root.value).not_to eq(nil)
+            expect(@l1.root.next).to eq(nil)
+        end
+    end
+    
+    describe "LinkedList" do 
+        it "Se puede insertar un elemento" do 
+            @l1.push(8)
+            expect(@l1.tail.value).to eq(8)
+        end
+        it "Se extrae el primer elemento de la lista" do 
+            @l1.push(8)
+            @l1.shift
+            expect(@l1.root.value).to eq(8)
+        end
+        it "Se pueden insertar varios elementos" do 
+            @l1.insert(3,4,5)
+            expect(@l1.tail.value).to eq(5)
+        end
+        it "Debe existir una lista con su cabeza" do 
+            expect(@l1.root.value).to eq("root")
+        end
+        it "La lista está doblemente enlazada" do 
+            @l1.insert(8, 7, 6)
+            expect(@l1.tail.previous.previous.value).to eq(8) 
+        end
+        it "La lista está doblemente enlazada" do 
+            @l1.insert(8, 7, 6)
+            expect(@l1.tail.previous.value).to eq(7) 
+        end
+        it "La lista está doblemente enlazada" do 
+            @l1.insert(8, 7, 6)
+            expect(@l1.root.previous).to eq(nil) 
+        end
+        it "pop" do 
+            @l1.pop(1)
+            expect(@l1.root.value).to eq(1) 
+        end
+        it "pull" do 
+            @l1.pop(1)
+            @l1.pull
+            expect(@l1.root.value).to eq(1) 
+        end
+        it "probando to_s" do
+            @l1.push("Pregunta 1")
+            expect(@l1.to_s).to eq("root\nPregunta 1\n")
+        end
+        it "Invertir lista" do
+            @l1.insert(1,2,3,4)
+            expect(@l1.invertirOrden.root.next.value).to eq(3)
+        end
+    end
+    
 end
+      
