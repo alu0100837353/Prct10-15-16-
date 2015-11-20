@@ -13,12 +13,12 @@ describe Biblio do
         @r3 = Biblio.new(["David Flanagan", "Yukihiro Matsumoto"],"The Ruby Programming Language", nil, "O’Reilly Media", 1, "4-2-2008", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
         @r4 = Biblio.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends","The Facets of Ruby", "Pragmatic Bookshelf", 1, "25-12-2010", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371"])
         @r5 = Biblio.new(["Richard E"], "Silverman Git Pocket Guide", nil, "O’Reilly Media", 1, "2-8-2013", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])
-        @l2 = Libro.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
-        @l3 = Libro.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
-        @l4 = Libro.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
-        @p1 = Periodical.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
-        @p2 = Periodical.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
-        @p3 = Periodical.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
+        @l2 = Libro.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"],100)
+        @l3 = Libro.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"],100)
+        @l4 = Libro.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"],100)
+        @p1 = Periodical.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["ref1", "ref2"])
+        @p2 = Periodical.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["ref1"])
+        @p3 = Periodical.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["ref1", "ref2"])
     end
     
     describe "Comprobación de una correcta construcción" do
@@ -245,9 +245,9 @@ describe Biblio do
             expect(@p3.editorial).not_to eq(nil)
         end
         it "Existe edicion" do
-            expect(@lp.n_edicion).not_to eq(nil)
-            expect(@lp.n_edicion).not_to eq(nil)
-            expect(@lp.n_edicion).not_to eq(nil)
+            expect(@p1.n_edicion).not_to eq(nil)
+            expect(@p2.n_edicion).not_to eq(nil)
+            expect(@p3.n_edicion).not_to eq(nil)
         end
         it "Existe fecha" do
             expect(@p1.fecha_publicacion).not_to eq(nil)
@@ -263,10 +263,6 @@ describe Biblio do
     
     describe "Comprobción de clases" do
         it "Existencia de clases y pertenencia a jerarquía" do
-          expect(@l1.instance_of? Biblio).to eq(false)
-          expect(@l1.kind_of? Biblio).to eq(true)
-          expect(@l1.instance_of? Libro).to eq(true)
-          
           expect(@l2.instance_of? Biblio).to eq(false)
           expect(@l2.kind_of? Biblio).to eq(true)
           expect(@l2.instance_of? Libro).to eq(true)
@@ -274,6 +270,10 @@ describe Biblio do
           expect(@l3.instance_of? Biblio).to eq(false)
           expect(@l3.kind_of? Biblio).to eq(true)
           expect(@l3.instance_of? Libro).to eq(true)
+          
+          expect(@l4.instance_of? Biblio).to eq(false)
+          expect(@l4.kind_of? Biblio).to eq(true)
+          expect(@l4.instance_of? Libro).to eq(true)
           
           expect(@p1.instance_of? Biblio).to eq(false)
           expect(@p1.kind_of? Biblio).to eq(true)
