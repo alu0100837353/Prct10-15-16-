@@ -13,6 +13,12 @@ describe Biblio do
         @r3 = Biblio.new(["David Flanagan", "Yukihiro Matsumoto"],"The Ruby Programming Language", nil, "O’Reilly Media", 1, "4-2-2008", ["ISBN-10: 0596516177", "ISBN-13: 978-0596516178"])
         @r4 = Biblio.new(["David Chelimsky", "Dave Astels", "Bryan Helmkamp", "Dan North", "Zach Dennis", "Aslak Hellesoy"],"The RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends","The Facets of Ruby", "Pragmatic Bookshelf", 1, "25-12-2010", ["ISBN-10: 1934356379", "ISBN-13: 978-1934356371"])
         @r5 = Biblio.new(["Richard E"], "Silverman Git Pocket Guide", nil, "O’Reilly Media", 1, "2-8-2013", ["ISBN-10: 1449325866", "ISBN-13: 978-1449325862"])
+        @l2 = Libro.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
+        @l3 = Libro.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
+        @l4 = Libro.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
+        @p1 = Periodical.new(["autor1","autor2","autor3"], "titulo", "serie", "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
+        @p2 = Periodical.new(["autor1"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1"])
+        @p3 = Periodical.new(["autor1","autor2"], "titulo", nil, "editorial", 1, "1-1-1991", ["isbn1", "isbn2"])
     end
     
     describe "Comprobación de una correcta construcción" do
@@ -176,6 +182,110 @@ describe Biblio do
             expect(@r3.to_s).to eq("David Flanagan, Yukihiro Matsumoto.\nThe Ruby Programming Language\nO’Reilly Media; 1 edición (04, February 2008)\nISBN-13: ISBN-10: 0596516177\nISBN-13: ISBN-13: 978-0596516178\n")
             expect(@r4.to_s).to eq("David Chelimsky, Dave Astels, Bryan Helmkamp, Dan North, Zach Dennis, Aslak Hellesoy.\nThe RSpec Book: Behaviour Driven Development with RSpec, Cucumber, and Friends\nThe Facets of Ruby\nPragmatic Bookshelf; 1 edición (25, December 2010)\nISBN-13: ISBN-10: 1934356379\nISBN-13: ISBN-13: 978-1934356371\n")
             expect(@r5.to_s).to eq("Richard E.\nSilverman Git Pocket Guide\nO’Reilly Media; 1 edición (02, August 2013)\nISBN-13: ISBN-10: 1449325866\nISBN-13: ISBN-13: 978-1449325862\n")
+        end
+    end
+    
+    describe "Comprobacion de construcción correcta de Libro" do
+        it "Existe al menos un autor" do
+            expect(@l2.autores).not_to eq(nil)
+            expect(@l3.autores).not_to eq(nil)
+            expect(@l4.autores).not_to eq(nil)
+        end
+        it "Existe titulo" do
+            expect(@l2.titulo).not_to eq(nil)
+            expect(@l3.titulo).not_to eq(nil)
+            expect(@l4.titulo).not_to eq(nil)
+        end
+        it "Existe o no una serie" do
+            expect(@l2.serie).not_to eq(nil)
+            expect(@l3.serie).to eq(nil)
+            expect(@l4.serie).to eq(nil)
+        end
+        it "Existe editorial" do
+            expect(@l2.editorial).not_to eq(nil)
+            expect(@l3.editorial).not_to eq(nil)
+            expect(@l4.editorial).not_to eq(nil)
+        end
+        it "Existe edicion" do
+            expect(@l2.n_edicion).not_to eq(nil)
+            expect(@l3.n_edicion).not_to eq(nil)
+            expect(@l4.n_edicion).not_to eq(nil)
+        end
+        it "Existe fecha" do
+            expect(@l2.fecha_publicacion).not_to eq(nil)
+            expect(@l3.fecha_publicacion).not_to eq(nil)
+            expect(@l4.fecha_publicacion).not_to eq(nil)
+        end
+        it "Existe isbn" do
+            expect(@l2.isbn).not_to eq(nil)
+            expect(@l3.isbn).not_to eq(nil)
+            expect(@l4.isbn).not_to eq(nil)
+        end
+    end
+    
+    describe "Comprobación de construcción correcta de Periodical" do
+        it "Existe al menos un autor" do
+            expect(@p1.autores).not_to eq(nil)
+            expect(@p2.autores).not_to eq(nil)
+            expect(@p3.autores).not_to eq(nil)
+        end
+        it "Existe titulo" do
+            expect(@p1.titulo).not_to eq(nil)
+            expect(@p2.titulo).not_to eq(nil)
+            expect(@p3.titulo).not_to eq(nil)
+        end
+        it "Existe o no una serie" do
+            expect(@p1.serie).not_to eq(nil)
+            expect(@p2.serie).to eq(nil)
+            expect(@p3.serie).to eq(nil)
+        end
+        it "Existe editorial" do
+            expect(@p1.editorial).not_to eq(nil)
+            expect(@p2.editorial).not_to eq(nil)
+            expect(@p3.editorial).not_to eq(nil)
+        end
+        it "Existe edicion" do
+            expect(@lp.n_edicion).not_to eq(nil)
+            expect(@lp.n_edicion).not_to eq(nil)
+            expect(@lp.n_edicion).not_to eq(nil)
+        end
+        it "Existe fecha" do
+            expect(@p1.fecha_publicacion).not_to eq(nil)
+            expect(@p2.fecha_publicacion).not_to eq(nil)
+            expect(@p2.fecha_publicacion).not_to eq(nil)
+        end
+        it "Existe ref(url o ref. periodico o ref. revista)" do
+            expect(@p1.ref).not_to eq(nil)
+            expect(@p2.ref).not_to eq(nil)
+            expect(@p3.ref).not_to eq(nil)
+        end
+    end
+    
+    describe "Comprobción de clases" do
+        it "Existencia de clases y pertenencia a jerarquía" do
+          expect(@l1.instance_of? Biblio).to eq(false)
+          expect(@l1.kind_of? Biblio).to eq(true)
+          expect(@l1.instance_of? Libro).to eq(true)
+          
+          expect(@l2.instance_of? Biblio).to eq(false)
+          expect(@l2.kind_of? Biblio).to eq(true)
+          expect(@l2.instance_of? Libro).to eq(true)
+          
+          expect(@l3.instance_of? Biblio).to eq(false)
+          expect(@l3.kind_of? Biblio).to eq(true)
+          expect(@l3.instance_of? Libro).to eq(true)
+          
+          expect(@p1.instance_of? Biblio).to eq(false)
+          expect(@p1.kind_of? Biblio).to eq(true)
+          expect(@p1.instance_of? Periodical).to eq(true)
+          
+          expect(@p2.instance_of? Biblio).to eq(false)
+          expect(@p2.kind_of? Biblio).to eq(true)
+          expect(@p2.instance_of? Periodical).to eq(true)
+         
+          expect(@p3.instance_of? Biblio).to eq(false)
+          expect(@p3.kind_of? Biblio).to eq(true)
+          expect(@p3.instance_of? Periodical).to eq(true)
         end
     end
 
