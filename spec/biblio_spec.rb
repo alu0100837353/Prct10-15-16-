@@ -289,6 +289,18 @@ describe Biblio do
         end
     end
 
+    describe "Enumerable y Comparable" do
+        it "Comprobacion Enumerable en linkedlist" do
+            expect(@l1.max).to eq('Root')
+            @l1.push("larguestever")
+            expect(@l1.max_by { |x| x.length } ).to eq('larguestever')
+        end
+        it "Comprabacion Comparable en Referencias" do
+            expect(@p1!=@p2).to eq(true)
+            expect(@p1==@p1).to eq(true)
+            expect(@p2!=@p3).to eq(true)
+        end
+    end
 end
            
 
