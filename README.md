@@ -1,8 +1,9 @@
-#Práctica 8 
+#Práctica 9 
 
 Desarrollo dirigido por pruebas.
 
-En esta práctica crearemos Libro y Periodical heredando de la ya creada referencia bibliografica. Utilizaremos la gema creada en la práctica anterior como punto de partida.
+En esta práctica utilizaremos los módulos Comparable y Enumerable. Utilizaremos la gema creada en la práctica anterior como punto de partida.
+Además haremos uso de Travis.
 
 # Desarrolladores
 
