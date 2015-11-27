@@ -1,9 +1,21 @@
 class List
+    include Enumerable
+    
     attr_accessor :root, :tail
 
     def initialize(valor)
         @root = Node.new(valor, nil, nil)
         @tail = @root
+    end
+    
+    #Métodos enumerables
+
+    def each 
+        var = @root
+        while var != nil do
+            yield var.value
+            var = var.next
+        end
     end
     
     #Métodos de insersión

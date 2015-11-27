@@ -1,6 +1,8 @@
 require 'date'
 
 class Biblio
+    include Comparable
+    
     attr_reader :autores, :titulo, :serie, :editorial, :n_edicion, :fecha_publicacion, :isbn
     
     def initialize(autores, titulo, serie, editorial, n_edicion, fecha_publicacion, isbn)
@@ -50,5 +52,9 @@ class Biblio
             salida = "#{str_autores}\n#{titulo}\n#{@editorial}; #{@n_edicion} edición (#{@fecha_publicacion.strftime("%d, %B %Y")})\n#{str_isbn}"
         end
         salida
+    end
+    
+    def <=> (another)
+        self.to_s <=> another.to_s
     end
 end

@@ -293,12 +293,12 @@ describe Biblio do
         it "Comprobacion Enumerable en linkedlist" do
             expect(@l1.max).to eq('Root')
             @l1.push("larguestever")
-            expect(@l1.max_by { |x| x.length } ).to eq('larguestever')
+            expect(@l1.map { |i| i.reverse } ).to eq(["tooR", "revetseugral"])
         end
         it "Comprabacion Comparable en Referencias" do
-            expect(@p1!=@p2).to eq(true)
+            expect(@p1==@p2).to eq(false)
             expect(@p1==@p1).to eq(true)
-            expect(@p2!=@p3).to eq(true)
+            expect(@p2==@p3).to eq(false)
         end
     end
 end
