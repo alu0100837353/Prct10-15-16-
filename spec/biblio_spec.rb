@@ -302,7 +302,7 @@ describe Biblio do
         end
     end
     
-    describe "Reference's list" do
+    #describe "Reference's list" do
         it "Construcción Correcta de la lista" do
             @rl = RList.new(@r1)
             @rl.to_s
@@ -326,7 +326,7 @@ describe Biblio do
             @rl.insert([@r2,@r3,@r4,@r5])
             expect(@rl.to_s).to eq("tostring") 
         end
-    end
+    #end
     
 end
            
