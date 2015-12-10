@@ -1,9 +1,9 @@
-#Práctica 9 
+#Práctica 10 
 
 Desarrollo dirigido por pruebas.
 
-En esta práctica utilizaremos los módulos Comparable y Enumerable. Utilizaremos la gema creada en la práctica anterior como punto de partida.
-Además haremos uso de Travis.
+En esta práctica partiendo de la Gema desarrollada en prácticas anteriores crearemos una lista de referencias.
+Además incorporaremos el uso de Coveralls para analizar el cubrimiento.
 
 # Desarrolladores
 
