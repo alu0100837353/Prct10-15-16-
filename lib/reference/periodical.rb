@@ -11,6 +11,19 @@ class Periodical < Biblio
         @ref = ref
     end
     
+    def to_apa
+        salida=""
+        # autores
+        str_autores = ""
+        @autores.each do |autor|
+            str_autores += "Autor, " + autor + "& "
+        end
+        str_autores = str_autores[0, str_autores.length - 2] + "."
+        
+        salida = "#{str_autores}\n(#{@fecha_publicacion.strftime("%d, %B %Y")})\n#{@titulo},#{@n_edicion}\n#{@editorial}\nDisponible en:#{@ref}"
+        salida
+    end
+    
     def to_s
         salida=""
         # autores

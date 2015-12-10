@@ -6,4 +6,5 @@ module Bibliografia
   require 'bibliografia/linkedlist.rb'
   require 'reference/libro.rb'
   require 'reference/periodical.rb'
+  require 'bibliografia/referencelist.rb'
 end

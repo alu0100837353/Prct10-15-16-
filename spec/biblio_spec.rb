@@ -301,6 +301,33 @@ describe Biblio do
             expect(@p2==@p3).to eq(false)
         end
     end
+    
+    describe "Reference's list" do
+        it "Construcción Correcta de la lista" do
+            @rl = RList.new(@r1)
+            @rl.to_s
+            expect(@rl.pull).to eq(@r1)
+            @rl.push(@r2)
+            expect(@rl.pull).to eq(@r2)
+            @rl.insert([@r3,@r4])
+            expect(@rl.pull).to eq(@r4)
+        end
+        it "Transformación a estandar APA" do
+            @rl = RList.new(@r1)
+            @rl.insert([@r2,@r3,@r4,@r5])
+            expect(@rl.pull).to eq("r5APA")
+            expect(@rl.pull).to eq("r4APA")
+            expect(@rl.pull).to eq("r3APA")
+            expect(@rl.pull).to eq("r2APA")
+            expect(@rl.pull).to eq("r1APA")
+        end
+        it "To_S" do
+            @rl = RList.new(@r1)
+            @rl.insert([@r2,@r3,@r4,@r5])
+            expect(@rl.to_s).to eq("tostring") 
+        end
+    end
+    
 end
            
 

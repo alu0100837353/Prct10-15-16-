@@ -27,6 +27,32 @@ class Biblio
         @isbn = isbn
     end
     
+    def apa
+        @autores.each do |autor|
+            str_autor = autor.split(' ')
+            @autores = str_autor[1] + ", " + str_autor[0]
+        end
+        @titulo = @titulo.split(" ").map(&:capitalize).join(" ")
+        @autores
+    end
+    
+    def to_apa
+        salida=""
+        str_autores = ""
+        @autores.each do |autor|
+            str_autores += "Autor, " + autor + "& "
+        end
+        str_autores = str_autores[0, str_autores.length - 2] + "."
+        
+        if(serie != nil)
+            salida = "#{str_autores}\n#{@titulo}\n#{@n_edicion}\n#{@serie}\n#{@editorial}"
+        else
+            salida = "#{str_autores}\n#{@titulo}\n#{@n_edicion}\n#{@editorial}"
+        end
+        salida
+    end
+    
+    
     def to_s
         salida=""
         # autores
